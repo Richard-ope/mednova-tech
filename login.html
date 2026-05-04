@@ -33,7 +33,8 @@
 
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        document.getElementById("msg").innerText = "Login Successful ✅";
+    window.location.href = "index.html";
+})
       })
       .catch((error) => {
         document.getElementById("msg").innerText = error.message;
