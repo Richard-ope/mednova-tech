@@ -1,31 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login - MedNova Tech</title>
-</head>
-<body style="text-align:center;font-family:Arial;">
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
 
-<h2>Login</h2>
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT",
+  };
 
-<input id="email" placeholder="Email"><br><br>
-<input id="password" type="password" placeholder="Password"><br><br>
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-<button onclick="login()">Login</button>
+  function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-<p id="msg"></p>
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        document.getElementById("msg").innerText = "Login Successful ✅";
+      })
+      .catch((error) => {
+        document.getElementById("msg").innerText = error.message;
+      });
+  }
 
-<script>
-function login() {
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-
-    if(email == "" || password == "") {
-        document.getElementById("msg").innerText = "Please fill all fields";
-    } else {
-        document.getElementById("msg").innerText = "Login Successful (Demo)";
-    }
-}
+  window.login = login;
 </script>
-
-</body>
-</html>
