@@ -1,18 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Login</title>
-</head>
-<body>
+//login.js
+import { auth } from "./firebase.js";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
-  <h2>Login</h2>
+function login() {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
 
-  <input type="email" id="email" placeholder="Enter Email"><br><br>
-  <input type="password" id="password" placeholder="Enter Password"><br><br>
+  if (!email || !password) {
+    alert("Enter email and password");
+    return;
+  }
 
-  <button onclick="login()">Login</button>
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      alert("Login Successful ✅");
+      console.log("User:", userCredential.user.email);
+    })
+    .catch((error) => {
+      alert(error.code);
+      console.log(error);
+    });
+}
 
-  <script type="module" src="login.js"></script>
-
-</body>
-</html>
+window.login = login;
