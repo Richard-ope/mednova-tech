@@ -1,13 +1,9 @@
-// firebase.js
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-
 const firebaseConfig = {
-  apiKey: "PUT_YOUR_API_KEY_HERE",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyA1YF6bz8bvOO02_fQ2EwTvwipe3TT7PUc",
+  authDomain: "mednovatach.firebaseapp.com",
+  projectId: "mednovatach",
+  storageBucket: "mednovatach.firebasestorage.app",
+  messagingSenderId: "169843702054",
+  appId: "1:169843702054:web:44379c966dda88be5c29e7",
+  measurementId: "G-BK6TYP3KND"
 };
-
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
